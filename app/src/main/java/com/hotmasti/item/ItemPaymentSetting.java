@@ -13,6 +13,7 @@ public class ItemPaymentSetting {
     private boolean isRazorPay = false;
     private boolean isPayStack = false;
     private String upiId;
+    private String upiMessage;
 
     public String getCurrencyCode() {
         return currencyCode;
@@ -101,5 +102,13 @@ public class ItemPaymentSetting {
 
     public void setUpiId(String upiId) {
         this.upiId = upiId;
+    }
+
+    public String getUpiMessage() {
+        return upiMessage;
+    }
+
+    public void setUpiMessage(String upiMessage) {
+        this.upiMessage = upiMessage;
     }
 }

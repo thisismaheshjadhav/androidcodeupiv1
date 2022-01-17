@@ -203,7 +203,7 @@ public class SelectPlanActivity extends AppCompatActivity implements PaymentStat
         EasyUpiPayment.Builder builder = new EasyUpiPayment.Builder(this)
                 .with(paymentApp)
                 .setPayeeVpa(paymentSetting.getUpiId())
-                .setPayeeName("Mahesh")
+                .setPayeeName(paymentSetting.getUpiMessage())
                 .setTransactionId(transactionId)
                 .setTransactionRefId(transactionId)
                 .setPayeeMerchantCode("")
@@ -273,131 +273,6 @@ public class SelectPlanActivity extends AppCompatActivity implements PaymentStat
     private void toast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-   /* public void UPI(String sVPA, String pn) {
-        Long tsLong = System.currentTimeMillis()/1000;
-        String transaction_ref_id = tsLong.toString()+"UPI"; // This is your Transaction Ref id - Here we used as a timestamp -
-
-        String sOrderId= tsLong +"UPI";// This is your order id - Here we used as a timestamp -
-
-        Log.e("TR Reference ID==>",""+transaction_ref_id);
-      //  Uri myAction = Uri.parse("upi://pay?pa="+sVPA+"&pn="+pn+"&mc=BCR2DN6TV74L53DF"+"&tid="+transaction_ref_id +"&tr="+transaction_ref_id +"&tn=Pay%20to%20Merchant%20Finance%20Assets&am="+"1.00"+"&mam=null&cu=INR&url=https://mystar.com/orderid="+sOrderId);
-
-        Uri myAction = new Uri.Builder()
-                .scheme("upi")
-                .authority("pay")
-                .appendQueryParameter("pa", sVPA)
-                .appendQueryParameter("pn", pn)
-                .appendQueryParameter("mc", "BCR2DN4TXCMMHACJ")
-                .appendQueryParameter("tr", "531234")
-                .appendQueryParameter("tn", "Test")
-                .appendQueryParameter("am", "10.00")
-                .appendQueryParameter("cu", "INR")
-                .appendQueryParameter("url", "")
-                .build();
-        PackageManager packageManager = getPackageManager();
-        //Intent intent = packageManager.getLaunchIntentForPackage("com.mgs.induspsp"); // Comment line - if you want to open specific application then you can pass that package name For example if you want to open Bhim app then pass Bhim app package name -
-        Intent intent = new Intent();
-
-        if (intent != null) {
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.setData(myAction);
-            // startActivity(intent);
-            Intent chooser = Intent.createChooser(intent, "Pay with...");
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                startActivityForResult(chooser, 1, null);
-            }
-
-        }
-    }
-    void payUsingUpi(String amount, String upiId, String name, String note) {
-        Uri uri = Uri.parse("upi://pay").buildUpon()
-                .appendQueryParameter("pa", upiId)
-                .appendQueryParameter("mc", "BCR2DN6TV74L53DF")
-                .appendQueryParameter("pn", name)
-                .appendQueryParameter("tn", note)
-                .appendQueryParameter("am", amount)
-                .appendQueryParameter("cu", "INR")
-                .build();
-
-        Intent upiPayIntent = new Intent(Intent.ACTION_VIEW);
-        upiPayIntent.setData(uri);
-
-        // will always show a dialog to user to choose an app
-        Intent chooser = Intent.createChooser(upiPayIntent, "Pay with");
-
-        // check if intent resolves
-        if (null != chooser.resolveActivity(getPackageManager())) {
-            startActivityForResult(chooser, UPI_PAYMENT);
-        } else {
-            Toast.makeText(SelectPlanActivity.this, "No UPI app found, please install one to continue", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case UPI_PAYMENT:
-                if ((RESULT_OK == resultCode) || (resultCode == 11)) {
-                    if (data != null) {
-                        String trxt = data.getStringExtra("response");
-                        Log.d("UPI", "onActivityResult: " + trxt);
-                        ArrayList<String> dataList = new ArrayList<>();
-                        dataList.add(trxt);
-                        upiPaymentDataOperation(dataList);
-                    } else {
-                        Log.d("UPI", "onActivityResult: " + "Return data is null");
-                        ArrayList<String> dataList = new ArrayList<>();
-                        dataList.add("nothing");
-                        //     upiPaymentDataOperation(dataList);
-                    }
-                } else {
-                    Log.d("UPI", "onActivityResult: " + "Return data is null"); //when user simply back without payment
-                    ArrayList<String> dataList = new ArrayList<>();
-                    dataList.add("nothing");
-                    //     upiPaymentDataOperation(dataList);
-                }
-                break;
-        }
-    }
-
-    private void upiPaymentDataOperation(ArrayList<String> data) {
-        if (NetworkUtils.isConnected(SelectPlanActivity.this)) {
-            String str = data.get(0);
-            Log.d("UPIPAY", "upiPaymentDataOperation: " + str);
-            String paymentCancel = "";
-            if (str == null) str = "discard";
-            String status = "";
-            String approvalRefNo = "";
-            String response[] = str.split("&");
-            for (int i = 0; i < response.length; i++) {
-                String equalStr[] = response[i].split("=");
-                if (equalStr.length >= 2) {
-                    if (equalStr[0].toLowerCase().equals("Status".toLowerCase())) {
-                        status = equalStr[1].toLowerCase();
-                    } else if (equalStr[0].toLowerCase().equals("ApprovalRefNo".toLowerCase()) || equalStr[0].toLowerCase().equals("txnRef".toLowerCase())) {
-                        approvalRefNo = equalStr[1];
-                    }
-                } else {
-                    paymentCancel = "Payment cancelled by user.";
-                }
-            }
-            Log.d("upiPaymentDataOperation", "status : " + status);
-            if (status.equals("success")) {
-                //Code to handle successful transaction here.
-                Toast.makeText(SelectPlanActivity.this, "Transaction successful.", Toast.LENGTH_SHORT).show();
-                Log.d("UPI", "responseStr: " + approvalRefNo);
-                new Transaction(SelectPlanActivity.this).purchasedItem(planId, approvalRefNo, "UPI");
-            } else if ("Payment cancelled by user.".equals(paymentCancel)) {
-                Toast.makeText(SelectPlanActivity.this, "Payment cancelled by user.", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(SelectPlanActivity.this, "Transaction failed.Please try again", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(SelectPlanActivity.this, "Internet connection is not available. Please check and try again", Toast.LENGTH_SHORT).show();
-        }
-    }*/
     private void getPaymentSetting() {
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();
@@ -436,7 +311,8 @@ public class SelectPlanActivity extends AppCompatActivity implements PaymentStat
                         paymentSetting.setRazorPayKey(objJson.getString(Constant.RAZOR_PAY_KEY));
                         paymentSetting.setPayStackPublicKey(objJson.getString(Constant.PAY_STACK_KEY));
                         paymentSetting.setPayStack(objJson.getBoolean(Constant.PAY_STACK_ON));
-                        paymentSetting.setUpiId(objJson.getString(Constant.UPI_ID));
+                        paymentSetting.setUpiId(objJson.getString(Constant.PAY_PAL_CLIENT));
+                        paymentSetting.setUpiMessage(objJson.getString(Constant.PAY_PAL_SECRET));
 
                         displayData();
                     } else {

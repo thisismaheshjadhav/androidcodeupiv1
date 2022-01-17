@@ -148,6 +148,7 @@ public class Constant implements Serializable {
     public static final String PAY_PAL_ON = "paypal_payment_on_off";
     public static final String PAY_PAL_SANDBOX = "paypal_mode";
     public static final String PAY_PAL_CLIENT = "paypal_client_id";
+    public static final String PAY_PAL_SECRET = "paypal_secret";
     public static final String STRIPE_PUBLISHER = "stripe_publishable_key";
     public static final String STRIPE_ON = "stripe_payment_on_off";
     public static final String RAZOR_PAY_ON = "razorpay_payment_on_off";

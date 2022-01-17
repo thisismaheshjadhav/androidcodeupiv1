@@ -84,7 +84,7 @@
     <string name="stripe">Stripe</string>
     <string name="razor_pay">RazorPay</string>
     <string name="pay_stack">PayStack</string>
-    <string name="pay_upi">OneUPI (Gpay,PhonePe,Paytm..)</string>
+    <string name="pay_upi">UPI</string>
     <string name="plan_day_for">For %s</string>
     <string name="no_payment_gateway">There is currently not any payment gateway is available so Please choose Free Plan. </string>
     <string name="select_gateway">Please select any one of them payment options</string>
