@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "771266287386",
+    "firebase_url": "https://database-a311c.firebaseio.com",
+    "project_id": "database-a311c",
+    "storage_bucket": "database-a311c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771266287386:android:a3639b4406d8dcfbfc3ea3",
+        "android_client_info": {
+          "package_name": "com.hotmasti.video"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771266287386-1linldndh8j58ik95f3p09ditvn5munj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYS2UfB-545Z3xEvSBb0Z_bGU8URyOORM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771266287386-1linldndh8j58ik95f3p09ditvn5munj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

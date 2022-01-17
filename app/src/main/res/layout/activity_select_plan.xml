@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/lyt_not_found"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_no_item"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_item_found"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/lytDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/lytProceed">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_close" />
+
+                <include
+                    android:id="@+id/lytChoose"
+                    layout="@layout/row_choose_plan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageClose"
+                    android:layout_marginTop="5dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/lytChoose"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_info"
+                        android:textColor="@color/home_header_text"
+                        android:textSize="16sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/plan_normal"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/tvPlanDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="10dp"
+                            android:includeFontPadding="false"
+                            android:text="@string/choose_plan"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/changePlan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@drawable/highlight_round_btn"
+                            android:paddingStart="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingEnd="15dp"
+                            android:paddingBottom="5dp"
+                            android:text="@string/change_plan"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/payment_option"
+                        android:textColor="@color/home_header_text"
+                        android:textSize="16sp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/plan_normal"
+                        android:orientation="vertical"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/textNoPaymentGateway"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:gravity="center"
+                            android:includeFontPadding="false"
+                            android:text="@string/no_payment_gateway"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:visibility="gone" />
+
+                        <RadioGroup
+                            android:id="@+id/radioGrp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp">
+
+                            <RadioButton
+                                android:id="@+id/rdUpi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="@string/pay_upi"
+                                android:textColor="@color/white" />
+                            <View
+                                android:id="@+id/viewUPI"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="5dp"
+                                android:background="@color/sub_divider" />
+
+                            <RadioButton
+                                android:id="@+id/rdPaypal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="@string/paypal"
+                                android:textColor="@color/white" />
+
+                            <View
+                                android:id="@+id/viewPaypal"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="5dp"
+                                android:background="@color/sub_divider" />
+
+                            <RadioButton
+                                android:id="@+id/rdStripe"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="@string/stripe"
+                                android:textColor="@color/white" />
+
+                            <View
+                                android:id="@+id/viewStripe"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="5dp"
+                                android:background="@color/sub_divider" />
+
+                            <RadioButton
+                                android:id="@+id/rdRazorPay"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="@string/razor_pay"
+                                android:textColor="@color/white" />
+
+                            <View
+                                android:id="@+id/viewRazorPay"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="5dp"
+                                android:background="@color/sub_divider" />
+
+                            <RadioButton
+                                android:id="@+id/rdPayStack"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="@string/pay_stack"
+                                android:textColor="@color/white" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/lytProceed"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:background="@color/highlight"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/subscription_proceed"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

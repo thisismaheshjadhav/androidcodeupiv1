@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hotmasti.video">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name="com.hotmasti.video.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name="com.hotmasti.video.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.hotmasti.video.MainActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.SignInActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.SignUpActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.ForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.MovieDetailsActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.SportDetailsActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.ShowDetailsActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+
+        <activity
+            android:name="com.hotmasti.video.TVDetailsActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.PlanActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+
+        <activity
+            android:name="com.hotmasti.video.SelectPlanActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.SearchHorizontalActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.DashboardActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.EditProfileActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.PayPalActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.hotmasti.video.RazorPayActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.hotmasti.video.StripeActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.hotmasti.video.PayStackActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.hotmasti.video.ActorDirectorDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <activity
+            android:name="com.hotmasti.video.EmbeddedPlayerActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="sensorLandscape" />
+
+        <activity
+            android:name="com.hotmasti.video.AcceptActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- Activity required to show ad overlays. -->
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/admob_app_id" />
+
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+        <meta-data
+            android:name="com.onesignal.NotificationAccentColor.DEFAULT"
+            android:value="FFD81B60" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.cast.framework.OPTIONS_PROVIDER_CLASS_NAME"
+            android:value="com.hotmasti.cast.CastOptionsProvider" />
+
+        <activity
+            android:name="com.hotmasti.cast.ExpandedControlsActivity"
+            android:theme="@style/Theme.CastVideosDark" />
+
+        <activity
+            android:name="com.braintreepayments.api.BraintreeBrowserSwitchActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="${applicationId}.braintree" />
+            </intent-filter>
+        </activity>
+    </application>
+
+    <queries>
+        <package android:name="com.facebook.katana" />
+        <package android:name="com.phonepe.app" />
+        <package android:name="com.google.android.apps.nbu.paisa.user" />
+    </queries>
+    <queries>
+        <intent>
+            <action android:name="com.google.android.youtube.api.service.START" />
+        </intent>
+    </queries>
+
+</manifest>
